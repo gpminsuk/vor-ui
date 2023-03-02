@@ -1,4 +1,18 @@
-<h1 class="text-3xl font-bold underline">
-  This is how you style in Tailwind (check inspect console and click here to see
-  the 'class' tags)
-</h1>
+<ion-tabs>
+  <ion-router-outlet></ion-router-outlet>
+
+  <ion-tab-bar slot="bottom" class="h-24">
+    <ion-tab-button tab="display">
+      <ion-icon name="easel-outline"></ion-icon>
+      Display
+    </ion-tab-button>
+    <ion-tab-button tab="events">
+      <ion-icon name="calendar-outline"></ion-icon>
+      Events
+    </ion-tab-button>
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      Profile
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
