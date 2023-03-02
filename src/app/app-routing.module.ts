@@ -1,15 +1,28 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ExampleComponent } from './example/example.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { RouterModule } from '@angular/router';
+import { DisplayComponent } from './display/display.component';
+import { EventsComponent } from './events/events.component';
 
-const routes: Routes = [
-  { path: 'example', component: ExampleComponent },
-  { path: '', component: HomepageComponent },
-];
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot([
+      {
+        path: 'example',
+        component: ExampleComponent,
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'display',
+          },
+          { path: 'display', component: DisplayComponent },
+          { path: 'events', component: EventsComponent },
+        ],
+      },
+    ]),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
