@@ -10,21 +10,21 @@
     </div>
     <div class="flex flex-1">
       <ion-spinner *ngIf="!ongoingEvent" name="lines-sharp"></ion-spinner>
-      <p #elseBlock>{{ ongoingEvent?.name }}</p>
+      <p #elseBlock>{{ ongoingEvent?.[0]?.name }}</p>
     </div>
     <div class="h-24">
       <p class="text-2xl">Future Events</p>
     </div>
     <div class="flex flex-1">
       <ion-spinner *ngIf="!futureEvent" name="lines-sharp"></ion-spinner>
-      <p #elseBlock>{{ futureEvent?.name }}</p>
+      <p #elseBlock>{{ futureEvent?.[0]?.name }}</p>
     </div>
     <div class="h-24">
       <p class="text-2xl">Past Events</p>
     </div>
     <div class="flex flex-1">
       <ion-spinner *ngIf="!pastEvent" name="lines-sharp"></ion-spinner>
-      <p #elseBlock>{{ pastEvent?.name }}</p>
+      <p #elseBlock>{{ pastEvent?.[0]?.name }}</p>
     </div>
   </div>
 </ion-content>

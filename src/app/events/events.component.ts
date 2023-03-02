@@ -9,14 +9,16 @@ import { Event } from '../types';
   styleUrls: ['./events.component.css'],
 })
 export class EventsComponent {
-  ongoingEvent?: Event;
-  futureEvent?: Event;
-  pastEvent?: Event;
+  ongoingEvent?: Event[];
+  futureEvent?: Event[];
+  pastEvent?: Event[];
 
   constructor() {}
 
   async ngOnInit() {
-    const events = await api.get('/user/events/ongoing');
-    this.ongoingEvent = events[0];
+    const { ongoing, future, past } = await api.get('/user/events');
+    this.ongoingEvent = ongoing;
+    this.futureEvent = future;
+    this.pastEvent = past;
   }
 }
