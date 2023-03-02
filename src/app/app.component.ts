@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './types';
 import { UserService } from './user.service';
 
 @Component({
@@ -9,10 +10,11 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
   title = 'vor-ui';
+  user?: User;
+
   constructor(private userService: UserService) {}
 
   async ngOnInit() {
-    const user = await this.userService.getUser();
-    console.log(user);
+    this.user = await this.userService.fetchUser();
   }
 }

@@ -2,23 +2,26 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Magic } from 'magic-sdk';
 import api, { initializeAxios } from './api';
+import { User } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   m: Magic;
+  user?: User;
 
   constructor(private router: Router) {
     this.m = new Magic('pk_live_052B100BE33F7355');
   }
 
-  async getUser() {
+  async fetchUser() {
     if (await this.m.user.isLoggedIn()) {
       const token = await this.m.user.getIdToken();
       initializeAxios(token);
-      return await api.get('/user');
+      this.user = await api.get('/user');
     }
+    return this.user;
   }
 
   async logout() {
