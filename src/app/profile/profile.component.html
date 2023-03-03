@@ -1,0 +1,18 @@
+<div class="p-16 flex flex-col gap-16">
+  <div class="flex flex-row gap-16 items-center">
+    <div
+      class="bg-yellow-500 rounded-full w-32 h-32 shrink-0 flex items-center justify-center"
+    >
+      <ion-text
+        color="primary"
+        class="font-bold text-[72px]"
+        >{{ user?.email?.[0] | uppercase }}</ion-text
+      >
+    </div>
+    <ion-text color="primary">
+      <p>Email: {{ user?.email }}</p>
+      <p>Wallet Address: {{ user?.publicAddress }}</p>
+    </ion-text>
+  </div>
+  <ion-button expand="block">Logout</ion-button>
+</div>
