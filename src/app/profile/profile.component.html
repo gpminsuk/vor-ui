@@ -14,5 +14,5 @@
       <p>Wallet Address: {{ user?.publicAddress }}</p>
     </ion-text>
   </div>
-  <ion-button expand="block">Logout</ion-button>
+  <ion-button expand="block" (click)="logout($event)">Logout</ion-button>
 </div>
