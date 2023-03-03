@@ -11,6 +11,7 @@ import { IonicModule } from '@ionic/angular';
 import { DisplayComponent } from './display/display.component';
 import { EventsComponent } from './events/events.component';
 import { AuthGuard } from './authGuard';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AuthGuard } from './authGuard';
     CallbackComponent,
     DisplayComponent,
     EventsComponent,
+    ProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, IonicModule.forRoot()],
   providers: [AuthGuard],

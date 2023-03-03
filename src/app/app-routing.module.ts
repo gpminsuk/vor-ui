@@ -7,6 +7,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './authGuard';
 import { HomepageComponent } from './homepage/homepage.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { HomepageComponent } from './homepage/homepage.component';
           },
           { path: 'display', component: DisplayComponent },
           { path: 'events', component: EventsComponent },
+          { path: 'profile', component: ProfileComponent },
         ],
       },
       {
