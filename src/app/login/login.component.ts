@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject, Renderer2 } from '@angular/core';
+import { Component, Inject, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -21,9 +21,5 @@ export class LoginComponent {
     );
     script.setAttribute('data-redirect-uri', '/callback');
     this._renderer2.appendChild(this._document.body, script);
-  }
-
-  @HostListener('click') onClick() {
-    console.log('User Click using Host Listener');
   }
 }
