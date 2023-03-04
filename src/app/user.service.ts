@@ -12,7 +12,16 @@ export class UserService {
   user?: User;
 
   constructor(private router: Router) {
-    this.m = new Magic('pk_live_052B100BE33F7355');
+    this.m = new Magic('pk_live_052B100BE33F7355', {
+      network: {
+        rpcUrl: 'https://rpc-mumbai.maticvigil.com',
+        chainId: 80001,
+      },
+    });
+  }
+
+  getUser() {
+    return this.user!;
   }
 
   async fetchUser() {

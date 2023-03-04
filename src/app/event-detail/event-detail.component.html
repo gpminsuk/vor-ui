@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Event Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="event" class="ion-padding">
+  <div class="h-full flex flex-col">
+    <div class="flex flex-1">
+      <ion-text color="primary">
+        <p class="text-2xl">{{ event!.name }}</p>
+        <p class="text-lg">{{ event!.description }}</p>
+      </ion-text>
+    </div>
+    <ion-nav-link router-direction="forward" [component]="badgeListComponent">
+      <ion-button expand="block">Assign badges</ion-button>
+    </ion-nav-link>
+  </div>
+</ion-content>

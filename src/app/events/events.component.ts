@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import _ from 'lodash';
 import api from '../api';
+import { EventDetailComponent } from '../event-detail/event-detail.component';
 import { Event } from '../types';
 
 @Component({
@@ -9,16 +12,17 @@ import { Event } from '../types';
   styleUrls: ['./events.component.css'],
 })
 export class EventsComponent {
-  ongoingEvent?: Event[];
-  futureEvent?: Event[];
-  pastEvent?: Event[];
+  events?: Event[];
+  eventDetailComponent = EventDetailComponent;
 
-  constructor() {}
+  constructor(private router: Router, private navCtrl: NavController) {}
 
   async ngOnInit() {
-    const { ongoing, future, past } = await api.get('/user/events');
-    this.ongoingEvent = ongoing;
-    this.futureEvent = future;
-    this.pastEvent = past;
+    this.events = await api.get('/event');
+  }
+
+  async goToEventDetail(event: Event) {
+    this.navCtrl.navigateForward(`/event/${event.id}`);
+    this.router.navigate([`/event/${event.id}`]);
   }
 }

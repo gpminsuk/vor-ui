@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Assign Badges</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div
+    *ngIf="isLoading"
+    class="absolute inset-0 flex flex-col items-center justify-center"
+  >
+    <ion-spinner name="lines-sharp"></ion-spinner>
+  </div>
+  <div *ngIf="!isLoading" class="h-full flex flex-col">
+    <div class="flex flex-col flex-1">
+      <ion-text color="primary">
+        <p class="text-2xl">Badge ({{ badges[0].name }})</p>
+        <p class="text-lg">{{ badges[0].description }}</p>
+      </ion-text>
+      <ion-text color="primary">
+        <p class="text-2xl">Receivers</p>
+        <div *ngFor="let badge of badges">
+          <ion-input
+            placeholder="Enter email"
+            [(ngModel)]="badge.changedRecipient"
+          ></ion-input>
+        </div>
+      </ion-text>
+    </div>
+  </div>
+</ion-content>

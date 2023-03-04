@@ -12,6 +12,7 @@ export class AuthGuard {
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const user = await this.userService.fetchUser();
+    console.log(user);
     if (user) {
       return true;
     }

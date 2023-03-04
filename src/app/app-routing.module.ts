@@ -5,9 +5,10 @@ import { EventsComponent } from './events/events.component';
 import { MainComponent } from './main/main.component';
 import { CallbackComponent } from './callback/callback.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './authGuard';
+import { AuthGuard } from './auth-guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EventDetailNavigationComponent } from './event-detail-navigation/event-detail-navigation.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,11 @@ import { ProfileComponent } from './profile/profile.component';
       {
         path: '',
         component: HomepageComponent,
+      },
+      {
+        path: 'event/:id',
+        component: EventDetailNavigationComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'main',

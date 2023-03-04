@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Assign Badges</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div
+    *ngIf="isLoading"
+    class="absolute inset-0 flex flex-col items-center justify-center"
+  >
+    <ion-spinner name="lines-sharp"></ion-spinner>
+  </div>
+  <div *ngIf="!isLoading" class="h-full flex flex-col">
+    <div class="flex flex-1">
+      <ion-text color="primary">
+        <p class="text-2xl">Badges ({{ event.name }})</p>
+        <div class="flex flex-col" *ngFor="let p of event.badges | keyvalue">
+          <div *ngFor="let badge of p.value">
+            <p class="text-lg">{{ badge.changedRecipient }}</p>
+          </div>
+          <ion-nav-link
+            router-direction="forward"
+            [component]="assignBadgeComponent"
+            [componentProps]="{ badges: p.value }"
+          >
+            <td>{{ p.value[0].changedRecipient ?? p.value[0].recipient }}</td>
+            <td>{{ p.value[0].tokenId }}</td>
+          </ion-nav-link>
+        </div>
+      </ion-text>
+    </div>
+    <ion-button (click)="saveAssignment()" expand="block"
+      >Save Assignment</ion-button
+    >
+    <ion-button (click)="addBadge()" expand="block">Create Badge</ion-button>
+  </div>
+</ion-content>

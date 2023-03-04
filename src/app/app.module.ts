@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -10,8 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { IonicModule } from '@ionic/angular';
 import { DisplayComponent } from './display/display.component';
 import { EventsComponent } from './events/events.component';
-import { AuthGuard } from './authGuard';
+import { AuthGuard } from './auth-guard';
 import { ProfileComponent } from './profile/profile.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { AssignBadgeComponent } from './assign-badge/assign-badge.component';
+import { EventDetailNavigationComponent } from './event-detail-navigation/event-detail-navigation.component';
+import { BadgeListComponent } from './badge-list/badge-list.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +27,17 @@ import { ProfileComponent } from './profile/profile.component';
     DisplayComponent,
     EventsComponent,
     ProfileComponent,
+    EventDetailComponent,
+    AssignBadgeComponent,
+    EventDetailNavigationComponent,
+    BadgeListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, IonicModule.forRoot()],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    IonicModule.forRoot(),
+    FormsModule,
+  ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })

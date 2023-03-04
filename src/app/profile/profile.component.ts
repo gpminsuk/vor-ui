@@ -16,4 +16,8 @@ export class ProfileComponent {
   async ngOnInit() {
     this.user = await this.userService.fetchUser();
   }
+
+  async logout() {
+    await this.userService.logout();
+  }
 }

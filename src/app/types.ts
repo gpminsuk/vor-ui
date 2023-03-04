@@ -4,10 +4,19 @@ export type User = {
 };
 
 export type Event = {
+  id: string;
+  address: string;
   name: string;
-  state: string;
-  startedTime: string;
-  endedTime: string;
   description: string;
   issuer: string;
+  badges: Record<string, Badge[]>;
+};
+
+export type Badge = {
+  tokenId: number;
+  state: number;
+  recipient: string;
+  changedRecipient: string;
+  name: string;
+  description: string;
 };
