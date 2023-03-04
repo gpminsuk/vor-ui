@@ -19,15 +19,15 @@
         <p class="text-2xl">Badges ({{ event.name }})</p>
         <div class="flex flex-col" *ngFor="let p of event.badges | keyvalue">
           <div *ngFor="let badge of p.value">
-            <p class="text-lg">{{ badge.changedRecipient }}</p>
+            <p class="text-lg">{{ badge.email }}</p>
           </div>
           <ion-nav-link
             router-direction="forward"
             [component]="assignBadgeComponent"
             [componentProps]="{ badges: p.value }"
           >
-            <td>{{ p.value[0].changedRecipient ?? p.value[0].email }}</td>
             <td>{{ p.value[0].tokenId }}</td>
+            <td>{{ p.value[0].email }}</td>
           </ion-nav-link>
         </div>
       </ion-text>

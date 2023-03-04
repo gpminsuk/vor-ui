@@ -10,10 +10,10 @@ import api from '../api';
 export class CallbackComponent {
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(async (params: any) => {
-      api.get('/user', {
+      await api.get('/user', {
         headers: { 'magic-token': params.didt ?? params.magic_credential },
       });
-      router.navigate(['/']);
+      router.navigate(['/main']);
     });
   }
 }

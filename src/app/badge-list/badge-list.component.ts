@@ -40,14 +40,8 @@ export class BadgeListComponent {
       for (let group in this.event.badges) {
         let badges = this.event.badges[group];
         for (let badge of badges) {
-          if (
-            badge.changedRecipient &&
-            badge.recipient !== badge.changedRecipient
-          ) {
-            updates.push({
-              recipient: badge.changedRecipient,
-              tokenId: badge.tokenId,
-            });
+          if (badge.email && badge.state === '1') {
+            updates.push(badge);
           }
         }
       }
@@ -55,9 +49,7 @@ export class BadgeListComponent {
       for (let update of updates) {
         const awardedUser = await api.post(
           `/event/${this.event.id}/${update.tokenId}/award/`,
-          {
-            recipientEmail: update.recipient,
-          }
+          { email: update.email }
         );
         if (awardedUser) {
           txUpdates.push({
@@ -74,7 +66,6 @@ export class BadgeListComponent {
           update.tokenId
         );
       }
-      return;
     } finally {
       this.isLoading = false;
     }

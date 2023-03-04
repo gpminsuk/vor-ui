@@ -14,10 +14,9 @@ export type Event = {
 
 export type Badge = {
   tokenId: number;
-  state: number;
+  state: string;
   recipient: string;
   email: string;
-  changedRecipient: string;
   name: string;
   description: string;
 };
