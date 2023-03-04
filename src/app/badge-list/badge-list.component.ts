@@ -48,7 +48,7 @@ export class BadgeListComponent {
       const txUpdates = [];
       for (let update of updates) {
         const awardedUser = await api.post(
-          `/event/${this.event.id}/${update.tokenId}/award/`,
+          `/event/${this.event.id}/${update.tokenId}/award`,
           { email: update.email }
         );
         if (awardedUser) {

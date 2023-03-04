@@ -46,4 +46,20 @@ export class Web3Service {
       .award(recipient, tokenId)
       .send({ from: user.publicAddress });
   }
+
+  async accept(event: Event, user: User, tokenId: number) {
+    const contract = new this.web3.eth.Contract(
+      VOREvent.abi as any,
+      event.address
+    );
+    await contract.methods.accept(tokenId).send({ from: user.publicAddress });
+  }
+
+  async reject(event: Event, user: User, tokenId: number) {
+    const contract = new this.web3.eth.Contract(
+      VOREvent.abi as any,
+      event.address
+    );
+    await contract.methods.reject(tokenId).send({ from: user.publicAddress });
+  }
 }

@@ -1,22 +1,44 @@
-<div class="py-16 px-4 flex flex-col gap-8">
-  <div class="flex flex-col gap-8 items-center">
-    <div
-      class="bg-yellow-500 rounded-full w-32 h-32 shrink-0 flex items-center justify-center"
-    >
-      <ion-text
-        color="primary"
-        class="font-bold text-[72px]"
-        >{{ user?.email?.[0] | uppercase }}</ion-text
-      >
-    </div>
-    <div class="w-full text-center">
-      <ion-text color="primary">
-        <p>{{ user?.email }}</p>
-        <p class="whitespace-pre text-ellipsis overflow-hidden">
-          {{ user?.publicAddress }}
-        </p>
-      </ion-text>
-    </div>
+<ion-content class="ion-padding">
+  <div
+    *ngIf="isLoading"
+    class="absolute inset-0 flex flex-col items-center justify-center"
+  >
+    <ion-spinner name="lines-sharp"></ion-spinner>
   </div>
-  <ion-button expand="block" (click)="logout()">Logout</ion-button>
-</div>
+  <div *ngIf="!isLoading" class="py-8 flex flex-col gap-8">
+    <div class="flex flex-col gap-8 items-center">
+      <div
+        class="bg-yellow-500 rounded-full w-32 h-32 shrink-0 flex items-center justify-center"
+      >
+        <ion-text
+          color="primary"
+          class="font-bold text-[72px]"
+          >{{ user?.email?.[0] | uppercase }}</ion-text
+        >
+      </div>
+      <div class="w-full text-center">
+        <ion-text color="primary">
+          <p>{{ user?.email }}</p>
+          <p class="whitespace-pre text-ellipsis overflow-hidden">
+            {{ user?.publicAddress }}
+          </p>
+        </ion-text>
+      </div>
+      <div *ngFor="let event of user?.awardedEvents ?? []">
+        <ion-text color="primary">{{ event.name }}</ion-text>
+        <div *ngFor="let badge of event.awardedBadges">
+          <div class="flex flex-row gap-4">
+            <ion-text color="primary">{{ badge.email }}</ion-text>
+            <ion-button (click)="reject(event, badge.tokenId)"
+              >Reject</ion-button
+            >
+            <ion-button (click)="accept(event, badge.tokenId)"
+              >Accept</ion-button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <ion-button expand="block" (click)="logout()">Logout</ion-button>
+  </div>
+</ion-content>
