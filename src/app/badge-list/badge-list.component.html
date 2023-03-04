@@ -26,7 +26,7 @@
             [component]="assignBadgeComponent"
             [componentProps]="{ badges: p.value }"
           >
-            <td>{{ p.value[0].changedRecipient ?? p.value[0].recipient }}</td>
+            <td>{{ p.value[0].changedRecipient ?? p.value[0].email }}</td>
             <td>{{ p.value[0].tokenId }}</td>
           </ion-nav-link>
         </div>

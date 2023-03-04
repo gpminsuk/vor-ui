@@ -16,6 +16,7 @@ export type Badge = {
   tokenId: number;
   state: number;
   recipient: string;
+  email: string;
   changedRecipient: string;
   name: string;
   description: string;

@@ -67,13 +67,12 @@ export class BadgeListComponent {
         }
       }
       for (let update of txUpdates) {
-        const result = await this.web3Service.assignBadge(
+        await this.web3Service.assignBadge(
           this.userService.getUser(),
           update.address,
           this.event,
           update.tokenId
         );
-        console.log(result);
       }
       return;
     } finally {
