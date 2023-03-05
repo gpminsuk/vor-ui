@@ -23,7 +23,15 @@ export class Web3Service {
     this.web3 = new Web3(this.m.rpcProvider);
   }
 
-  async addBadge(user: User, event: Event, file: File) {
+  async addBadge(
+    user: User,
+    event: Event,
+    file: File,
+    name: string,
+    description: string,
+    group: string,
+    category: string
+  ) {
     const form = new FormData();
     form.append('file', file);
     const cid = await api.post(`/event/file`, form);
@@ -32,7 +40,13 @@ export class Web3Service {
       event.address
     );
     await contract.methods
-      .addBadges(['Event Name'], ['Event description'], [3], [cid])
+      .addBadges(
+        [name],
+        [description],
+        [parseInt(group)],
+        [cid],
+        [parseInt(category)]
+      )
       .send({ from: user.publicAddress });
   }
 

@@ -4,11 +4,16 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <div
+    *ngIf="!events"
+    class="absolute inset-0 flex flex-col items-center justify-center"
+  >
+    <ion-spinner name="lines-sharp"></ion-spinner>
+  </div>
   <div class="h-full flex flex-col">
     <div class="flex flex-1">
-      <ion-spinner *ngIf="!events" name="lines-sharp"></ion-spinner>
       <div *ngIf="events" (click)="goToEventDetail(events![0]!)">
-        <p>{{ events?.[0]?.name }}</p>
+        <p>{{ events[0].name }}</p>
       </div>
     </div>
   </div>

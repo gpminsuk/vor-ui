@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import _ from 'lodash';
+import _, { kebabCase } from 'lodash';
 import api from '../api';
 import { AssignBadgeComponent } from '../assign-badge/assign-badge.component';
 import { EventService } from '../event.service';
@@ -17,6 +17,10 @@ export class BadgeListComponent {
   event = this.eventService.getEvent();
   assignBadgeComponent = AssignBadgeComponent;
   file?: File;
+  name?: string;
+  description?: string;
+  group?: string;
+  category?: string;
 
   constructor(
     private userService: UserService,
@@ -33,7 +37,11 @@ export class BadgeListComponent {
       await this.web3Service.addBadge(
         this.userService.getUser(),
         this.event,
-        this.file
+        this.file,
+        this.name!,
+        this.description!,
+        this.group!,
+        this.category!
       );
       this.event = await this.eventService.fetchEvent(this.event.id);
     } finally {

@@ -50,8 +50,19 @@
     <ion-button (click)="saveAssignment()" expand="block"
       >Save Assignment</ion-button
     >
-
-    <input type="file" class="file-input" (change)="selectFile($event)" />
-    <ion-button (click)="addBadge()" expand="block">Create Badge</ion-button>
+    <div>
+      <ion-input placeholder="Badge name" [(ngModel)]="name"></ion-input>
+      <ion-input
+        placeholder="Badge description"
+        [(ngModel)]="description"
+      ></ion-input>
+      <ion-input placeholder="Badge group" [(ngModel)]="group"></ion-input>
+      <ion-input
+        placeholder="Badge category"
+        [(ngModel)]="category"
+      ></ion-input>
+      <input type="file" class="file-input" (change)="selectFile($event)" />
+      <ion-button (click)="addBadge()" expand="block">Create Badge</ion-button>
+    </div>
   </div>
 </ion-content>

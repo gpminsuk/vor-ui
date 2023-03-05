@@ -24,17 +24,21 @@
           </p>
         </ion-text>
       </div>
-      <div *ngFor="let event of user?.awardedEvents ?? []">
-        <ion-text color="primary">{{ event.name }}</ion-text>
-        <div *ngFor="let badge of event.awardedBadges">
-          <div class="flex flex-row gap-4">
-            <ion-text color="primary">{{ badge.email }}</ion-text>
-            <ion-button (click)="reject(event, badge.tokenId)"
-              >Reject</ion-button
-            >
-            <ion-button (click)="accept(event, badge.tokenId)"
-              >Accept</ion-button
-            >
+      <div class="flex flex-col gap-4">
+        <div *ngFor="let event of user?.awardedEvents ?? []">
+          <ion-text color="primary">{{ event.name }}</ion-text>
+          <div class="flex flex-col gap-4">
+            <div *ngFor="let badge of event.awardedBadges">
+              <div class="flex flex-row items-center gap-4">
+                <img class="w-24 h-24 rounded-lg" [src]="badge.tokenURI" />
+                <ion-button (click)="reject(event, badge.tokenId)"
+                  >Reject</ion-button
+                >
+                <ion-button (click)="accept(event, badge.tokenId)"
+                  >Accept</ion-button
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -8,13 +8,29 @@
 </ion-header>
 <ion-content *ngIf="event" class="ion-padding">
   <div class="h-full flex flex-col">
-    <div class="flex flex-1">
-      <ion-text color="primary">
-        <p class="text-2xl">{{ event!.name }}</p>
-        <p class="text-lg">{{ event!.description }}</p>
-      </ion-text>
+    <div class="flex flex-col flex-1">
+      <div class="flex flex-col flex-1 gap-4">
+        <ion-text color="primary">
+          <p class="text-2xl">{{ event!.name }}</p>
+        </ion-text>
+        <ion-text color="primary">
+          <p class="text-lg">{{ event!.description }}</p>
+        </ion-text>
+      </div>
+      <div class="flex flex-row gap-2 py-16">
+        <div *ngFor="let p of event.badges | keyvalue">
+          <div class="flex flex-col gap-4">
+            <img class="w-24 h-24 rounded-lg" [src]="p.value[0].tokenURI" />
+            <p class="text-lg">x {{ p.value.length }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <ion-nav-link router-direction="forward" [component]="badgeListComponent">
+    <ion-nav-link
+      *ngIf="isOrganizer()"
+      router-direction="forward"
+      [component]="badgeListComponent"
+    >
       <ion-button expand="block">Assign badges</ion-button>
     </ion-nav-link>
   </div>

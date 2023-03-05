@@ -1,4 +1,5 @@
 export type User = {
+  _id: string;
   email: string;
   publicAddress: string;
   awardedEvents: Event[];
@@ -6,6 +7,7 @@ export type User = {
 };
 
 export type Event = {
+  organizer: string;
   id: string;
   address: string;
   name: string;
@@ -24,4 +26,5 @@ export type Badge = {
   name: string;
   description: string;
   tokenURI: string;
+  category: string;
 };

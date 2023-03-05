@@ -5,6 +5,7 @@ import { AssignBadgeComponent } from '../assign-badge/assign-badge.component';
 import { BadgeListComponent } from '../badge-list/badge-list.component';
 import { EventService } from '../event.service';
 import { Event } from '../types';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -19,7 +20,8 @@ export class EventDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private eventService: EventService
+    private eventService: EventService,
+    private userService: UserService
   ) {
     this.id = this.route.snapshot.paramMap.get('id')!;
   }
@@ -30,5 +32,9 @@ export class EventDetailComponent {
 
   async ngOnInit() {
     this.event = await this.eventService.fetchEvent(this.id);
+  }
+
+  isOrganizer() {
+    return this.userService.getUser()._id === this.event?.organizer;
   }
 }

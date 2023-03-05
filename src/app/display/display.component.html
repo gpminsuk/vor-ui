@@ -3,23 +3,49 @@
     <ion-title>Display</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+
+<ion-content (ionScroll)="onScroll($any($event))" [scrollEvents]="true">
   <div
     *ngIf="isLoading"
     class="absolute inset-0 flex flex-col items-center justify-center"
   >
     <ion-spinner name="lines-sharp"></ion-spinner>
   </div>
-  <div *ngIf="!isLoading" class="py-8 flex flex-col gap-8">
-    <div class="flex flex-col gap-8 items-center">
-      <div *ngFor="let event of user?.acceptedEvents ?? []">
-        <ion-text color="primary">{{ event.name }}</ion-text>
-        <div *ngFor="let badge of event.acceptedBadges">
-          <div class="flex flex-row gap-4">
-            <ion-text color="primary">{{ badge.email }}</ion-text>
-          </div>
-        </div>
-      </div>
+  <div *ngIf="!isLoading" class="relative" [ngStyle]="{ height: '1000px' }">
+    <img class="absolute w-full h-full" src="/assets/background.png" />
+    <img
+      class="absolute"
+      [ngStyle]="getStyleByCategory(1)"
+      src="/assets/planet_1.png"
+    />
+    <img
+      class="absolute"
+      [ngStyle]="getStyleByCategory(2)"
+      src="/assets/planet_2.png"
+    />
+    <img
+      class="absolute"
+      [ngStyle]="getStyleByCategory(3)"
+      src="/assets/planet_3.png"
+    />
+    <img
+      class="absolute"
+      [ngStyle]="getStyleByCategory(4)"
+      src="/assets/planet_4.png"
+    />
+    <div
+      class="absolute min-w-max"
+      *ngFor="let badge of getBadgesByCategory(1); let i = index"
+      [ngStyle]="getStyleByCategory(1, i)"
+    >
+      <img class="w-24 h-24 rounded-lg min-w-max" [src]="badge.tokenURI" />
+    </div>
+    <div
+      class="absolute min-w-max"
+      *ngFor="let badge of getBadgesByCategory(2); let i = index"
+      [ngStyle]="getStyleByCategory(2, i)"
+    >
+      <img class="w-24 h-24 rounded-lg min-w-max" [src]="badge.tokenURI" />
     </div>
   </div>
 </ion-content>
