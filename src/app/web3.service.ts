@@ -23,14 +23,17 @@ export class Web3Service {
     this.web3 = new Web3(this.m.rpcProvider);
   }
 
-  async createEvent(user: User, name: string, description: string) {
+  async createEvent(user: User, name: string, description: string, file: File) {
     const contract = new this.web3.eth.Contract(VOREvent.abi as any);
     const deployTx = contract.deploy({
       data: VOREvent.bytecode,
       arguments: [name, description, user.publicAddress],
     });
     const deploy = await deployTx.send({ from: user.publicAddress });
-    await api.post('/event', { address: deploy.options.address });
+    const form = new FormData();
+    form.append('file', file);
+    form.append('address', 'deploy.options.address');
+    await api.post('/event', form);
   }
 
   async addBadge(
