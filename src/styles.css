@@ -29,3 +29,59 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 @import "~@ionic/angular/css/display.css";
+
+.tab_1 {
+  background-image: url(/assets/tab_1.svg);
+  background-size: contain;
+}
+
+.tab-selected .tab_1 {
+  background-image: url(/assets/tab_1_active.svg);
+  background-size: contain;
+}
+
+.tab_2 {
+  background-image: url(/assets/tab_2.svg);
+  background-size: contain;
+}
+
+.tab-selected .tab_2 {
+  background-image: url(/assets/tab_2_active.svg);
+  background-size: contain;
+}
+
+.tab_3 {
+  background-image: url(/assets/tab_3.svg);
+  background-size: contain;
+}
+
+.tab-selected .tab_3 {
+  background-image: url(/assets/tab_3_active.svg);
+  background-size: contain;
+}
+
+.tab_4 {
+  background-image: url(/assets/tab_4.svg);
+  background-size: contain;
+}
+
+.tab-selected .tab_4 {
+  background-image: url(/assets/tab_4_active.svg);
+  background-size: contain;
+}
+
+ion-tab-bar {
+  background: linear-gradient(270deg, #c67dcc 0%, #4840dc 100%) !important;
+}
+
+ion-title {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.toolbar {
+  background-color: #e4e4e4;
+  height: 75px;
+}

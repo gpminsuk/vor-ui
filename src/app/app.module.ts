@@ -16,6 +16,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AssignBadgeComponent } from './assign-badge/assign-badge.component';
 import { EventDetailNavigationComponent } from './event-detail-navigation/event-detail-navigation.component';
 import { BadgeListComponent } from './badge-list/badge-list.component';
+import { AvatarComponent } from './avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { BadgeListComponent } from './badge-list/badge-list.component';
     AssignBadgeComponent,
     EventDetailNavigationComponent,
     BadgeListComponent,
+    AvatarComponent,
   ],
   imports: [
     BrowserModule,

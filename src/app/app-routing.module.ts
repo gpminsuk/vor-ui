@@ -9,6 +9,7 @@ import { AuthGuard } from './auth-guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EventDetailNavigationComponent } from './event-detail-navigation/event-detail-navigation.component';
+import { AvatarComponent } from './avatar/avatar.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { EventDetailNavigationComponent } from './event-detail-navigation/event-
             pathMatch: 'full',
             redirectTo: 'display',
           },
+          { path: 'avatar', component: AvatarComponent },
           { path: 'display', component: DisplayComponent },
           { path: 'events', component: EventsComponent },
           { path: 'profile', component: ProfileComponent },

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ScrollDetail } from '@ionic/angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonContent, ScrollDetail } from '@ionic/angular';
 import { User } from '../types';
 import { UserService } from '../user.service';
 import _ from 'lodash';
@@ -13,6 +13,7 @@ export class DisplayComponent {
   user?: User;
   isLoading = false;
   scrollTop = 0;
+  maxScrolled = false;
 
   constructor(private userService: UserService) {}
 
@@ -66,7 +67,19 @@ export class DisplayComponent {
     return {};
   }
 
-  onScroll(ev: CustomEvent<ScrollDetail>) {
+  // @ts-ignore
+  @ViewChild(IonContent) content: IonContent;
+
+  async onScroll(ev: CustomEvent<ScrollDetail>) {
     this.scrollTop = ev.detail.scrollTop;
+    const scrollElement = await this.content.getScrollElement();
+    if (
+      scrollElement.scrollTop ===
+      scrollElement.scrollHeight - scrollElement.clientHeight
+    ) {
+      this.maxScrolled = true;
+    } else {
+      this.maxScrolled = false;
+    }
   }
 }

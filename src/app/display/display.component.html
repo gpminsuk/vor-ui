@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Display</ion-title>
+  <ion-toolbar class="toolbar" color="none">
+    <ion-title>Badge Wall</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,7 @@
   >
     <ion-spinner name="lines-sharp"></ion-spinner>
   </div>
-  <div *ngIf="!isLoading" class="relative" [ngStyle]="{ height: '1000px' }">
+  <div *ngIf="!isLoading" class="relative" [ngStyle]="{ height: '1200px' }">
     <img class="absolute w-full h-full" src="/assets/background.png" />
     <img
       class="absolute"
@@ -33,6 +33,7 @@
       [ngStyle]="getStyleByCategory(4)"
       src="/assets/planet_4.png"
     />
+
     <div
       class="absolute min-w-max"
       *ngFor="let badge of getBadgesByCategory(1); let i = index"
@@ -49,3 +50,15 @@
     </div>
   </div>
 </ion-content>
+
+<div
+  *ngIf="!maxScrolled"
+  class="absolute text-white"
+  [ngStyle]="{
+    bottom: '0px',
+    left: '50%',
+    transform: 'translate(-50%, -50%) scale(3, 3)'
+  }"
+>
+  <ion-icon name="arrow-down"></ion-icon>
+</div>
