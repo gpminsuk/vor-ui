@@ -38,18 +38,4 @@ export class EventsComponent {
     this.navCtrl.navigateForward(`/event/${event.id}`);
     this.router.navigate([`/event/${event.id}`]);
   }
-
-  async createEvent() {
-    this.isLoading = true;
-    try {
-      await this.web3Service.createEvent(
-        this.userService.getUser(),
-        'name',
-        'desc'
-      );
-      this.events = await api.get('/event');
-    } finally {
-      this.isLoading = false;
-    }
-  }
 }
