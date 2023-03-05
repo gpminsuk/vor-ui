@@ -10,6 +10,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EventDetailNavigationComponent } from './event-detail-navigation/event-detail-navigation.component';
 import { AvatarComponent } from './avatar/avatar.component';
+import { EventRegisterComponent } from './events/event-register/event-register.component';
+import { EventUploadBadgesComponent } from './events/event-upload-badges/event-upload-badges.component';
+import { EventFinalizeBadgeInfoComponent } from './events/event-finalize-badge-info/event-finalize-badge-info.component';
 
 @NgModule({
   imports: [
@@ -35,7 +38,27 @@ import { AvatarComponent } from './avatar/avatar.component';
           },
           { path: 'avatar', component: AvatarComponent },
           { path: 'display', component: DisplayComponent },
-          { path: 'events', component: EventsComponent },
+          {
+            path: 'events',
+            children: [
+              {
+                path: '',
+                component: EventsComponent,
+              },
+              {
+                path: 'register',
+                component: EventRegisterComponent,
+              },
+              {
+                path: 'badges',
+                component: EventUploadBadgesComponent,
+              },
+              {
+                path: 'finalize',
+                component: EventFinalizeBadgeInfoComponent,
+              },
+            ],
+          },
           { path: 'profile', component: ProfileComponent },
         ],
       },

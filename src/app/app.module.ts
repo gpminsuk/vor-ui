@@ -15,8 +15,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AssignBadgeComponent } from './assign-badge/assign-badge.component';
 import { EventDetailNavigationComponent } from './event-detail-navigation/event-detail-navigation.component';
-import { BadgeListComponent } from './badge-list/badge-list.component';
 import { AvatarComponent } from './avatar/avatar.component';
+import { BadgeListComponent } from './badge-list/badge-list.component';
+import { EventRegisterComponent } from './events/event-register/event-register.component';
+import { EventUploadBadgesComponent } from './events/event-upload-badges/event-upload-badges.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AvatarComponent } from './avatar/avatar.component';
     EventDetailNavigationComponent,
     BadgeListComponent,
     AvatarComponent,
+    EventRegisterComponent,
+    EventUploadBadgesComponent,
   ],
   imports: [
     BrowserModule,

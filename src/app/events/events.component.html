@@ -10,6 +10,16 @@
   >
     <ion-spinner name="lines-sharp"></ion-spinner>
   </div>
+  <div
+  *ngIf="events?.length === 0">
+  <svg width="400" height="110">
+  </svg>
+  <h1 style="position: relative; top:-15%;left:30%;"> Create Events </h1>
+  <h2 style="position: relative; left:10%; margin-bottom: 20%;" > Do you want to create an event? </h2>
+  <a [routerLink]="['/main/events/register']" routerLinkActive="true">
+  <ion-button style="padding-left:20%;"> <p style="fill:#7dfacd;" > Create an Event </p> </ion-button>
+  </a>
+</div>
   <div class="h-full flex flex-col">
     <div class="flex flex-1">
       <div *ngIf="events" (click)="goToEventDetail(events![0]!)">
@@ -18,3 +28,4 @@
     </div>
   </div>
 </ion-content>
+
