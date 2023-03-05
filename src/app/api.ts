@@ -1,7 +1,7 @@
 import { isDevMode } from '@angular/core';
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 export const baseURL = isDevMode()
-  ? `http://localhost:3000`
+  ? `http://localhost:4001`
   : `https://VOR_DOMAIN.com`;
 let client = axios.create({
   baseURL,
