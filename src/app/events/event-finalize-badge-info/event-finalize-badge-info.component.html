@@ -1,1 +1,77 @@
-<p>event-finalize-badge-info works!</p>
+<ion-content>
+  <svg width="400" height="110">
+    <rect
+      width="100%"
+      height="60"
+      style="
+        border-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        background-color: #201c1c;
+      "
+    />
+  </svg>
+  <h1 style="position: relative; top: -15%; left: 35%; color: white">
+    Create Events
+  </h1>
+
+  <h2
+    style="
+      font-size: 15px;
+      padding-bottom: 30px;
+      padding-left: 13px;
+      font-size: 20px;
+      color: white;
+    "
+  >
+    Creating Badges:
+  </h2>
+  <h3 style="padding-left: 13px; color: white">Upload Badge Image</h3>
+  <ion-input
+    style="margin-bottom: 30%; margin-left: 30px"
+    class="mx-30"
+    type="file"
+    [(ngModel)]="event_badge"
+  ></ion-input>
+
+  <h3 style="padding-left: 13px; color: white">Type of Badge:</h3>
+  <select style="background-color: gray; margin-bottom: 30%; margin-left: 30px">
+    <option value="Peer">Peer-to-Peer</option>
+    <option value="Certificates">Certificates</option>
+    <option value="Competition">Competition Rank</option>
+    <option value="Personal">Personal Achievement</option>
+    <option value="Participants">Participants</option>
+  </select>
+
+  <h3 style="padding-left: 13px; color: white">Badge Name:</h3>
+  <ion-input
+    style="background-color: gray; margin-bottom: 30%; margin-left: 30px"
+    class="mx-30"
+    [(ngModel)]="event_badge_name"
+  ></ion-input>
+
+  <h3 style="padding-left: 13px; color: white">Number of Badges:</h3>
+  <ion-input
+    style="background-color: gray; margin-bottom: 30%; margin-left: 30px"
+    class="mx-30"
+    type="number"
+    [(ngModel)]="event_badge_number"
+  ></ion-input>
+
+  <h3 style="padding-left: 13px; color: white">Badge Description:</h3>
+  <ion-input
+    style="background-color: gray; margin-bottom: 30%; margin-left: 30px"
+    class="mx-30"
+    [(ngModel)]="event_badge_desc"
+  ></ion-input>
+
+  <a [routerLink]="['/main/events/register']" routerLinkActive="true">
+    <ion-button style="left: 10%; padding-left: 13px">
+      <p style="font-family: Lucida Console">Back</p>
+    </ion-button>
+  </a>
+  <ion-button style="right: 10%; padding-right: 13px" (click)="addBadge()">
+    <p style="font-family: Lucida Console">Next</p>
+  </ion-button>
+</ion-content>

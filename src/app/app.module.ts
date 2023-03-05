@@ -19,6 +19,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { BadgeListComponent } from './badge-list/badge-list.component';
 import { EventRegisterComponent } from './events/event-register/event-register.component';
 import { EventUploadBadgesComponent } from './events/event-upload-badges/event-upload-badges.component';
+import { EventFinalizeBadgeInfoComponent } from './events/event-finalize-badge-info/event-finalize-badge-info.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { EventUploadBadgesComponent } from './events/event-upload-badges/event-u
     AvatarComponent,
     EventRegisterComponent,
     EventUploadBadgesComponent,
+    EventFinalizeBadgeInfoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,54 @@
 <svg width="400" height="110">
-    <rect width=100% height="60" style="border-style: none; display: inline-block;margin:0;padding:0; background-color:
-    #201c1c" />
-  </svg>
-  <h1 style="position: relative; top:-15%;left:35%; color:white"> Create Events </h1>
-    <h2 style="font-size: 15px; padding-bottom: 30px; padding-left:13px; font-size:20px; color: white;"> Write event details: </h2>
-    <h3 style="padding-left:13px; color: white;" > Event Name </h3>
-    <ion-input style="background-color: gray; width:80%; height: 5%; margin-left: 30px;" class="mx-13" [(ngModel)]="event_name"></ion-input> 
-    <h3 style="padding-left:13px;" > Event description </h3>
-    <ion-input style="background-color: gray; width:80%; height: 5%; margin-left: 30px;" class="mx-13" [(ngModel)]="event_desc"></ion-input> 
-    <h3 style="padding-left:13px; color: white; " > Upload Event Banner </h3>
-    <ion-input style="margin-bottom: 30%; margin-left: 30px;"class="mx-30" type="file" [(ngModel)]="event_banner"></ion-input> 
-    <a [routerLink]="['/main/events']" routerLinkActive="true">
-      <ion-button style="left:10%; padding-left: 13px;"> <p style="font-family:Lucida Console;" > Back </p> </ion-button>
-    </a>
-    <a [routerLink]="['/main/events/badges']" routerLinkActive="true">
-      <ion-button style="right:10%; padding-right: 13px;"> <p style="font-family:Lucida Console;" > Next </p> </ion-button>
-    </a>
+  <rect
+    width="100%"
+    height="60"
+    style="
+      border-style: none;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      background-color: #201c1c;
+    "
+  />
+</svg>
+<h1 style="position: relative; top: -15%; left: 35%; color: white">
+  Create Events
+</h1>
+<h2
+  style="
+    font-size: 15px;
+    padding-bottom: 30px;
+    padding-left: 13px;
+    font-size: 20px;
+    color: white;
+  "
+>
+  Write event details:
+</h2>
+<h3 style="padding-left: 13px; color: white">Event Name</h3>
+<ion-input
+  style="background-color: gray; width: 80%; height: 5%; margin-left: 30px"
+  class="mx-13"
+  [(ngModel)]="event_name"
+></ion-input>
+<h3 style="padding-left: 13px">Event description</h3>
+<ion-input
+  style="background-color: gray; width: 80%; height: 5%; margin-left: 30px"
+  class="mx-13"
+  [(ngModel)]="event_desc"
+></ion-input>
+<h3 style="padding-left: 13px; color: white">Upload Event Banner</h3>
+<ion-input
+  style="margin-bottom: 30%; margin-left: 30px"
+  class="mx-30"
+  type="file"
+  [(ngModel)]="event_banner"
+></ion-input>
+<a [routerLink]="['/main/events']" routerLinkActive="true">
+  <ion-button style="left: 10%; padding-left: 13px">
+    <p style="font-family: Lucida Console">Back</p>
+  </ion-button>
+</a>
+<ion-button style="right: 10%; padding-right: 13px" (click)="createEvent()">
+  <p style="font-family: Lucida Console">Next</p>
+</ion-button>

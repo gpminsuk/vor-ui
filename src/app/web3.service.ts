@@ -32,7 +32,7 @@ export class Web3Service {
     const deploy = await deployTx.send({ from: user.publicAddress });
     const form = new FormData();
     form.append('file', file);
-    form.append('address', 'deploy.options.address');
+    form.append('address', deploy.options.address);
     await api.post('/event', form);
   }
 
