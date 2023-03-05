@@ -33,7 +33,7 @@ export class ProfileComponent {
     try {
       await this.web3Service.accept(event, this.userService.getUser(), tokenId);
       await api.post(`/event/${event.id}/${tokenId}/accept`);
-      await this.userService.fetchUser();
+      this.user = await this.userService.fetchUser();
     } catch (e) {
       console.log(e);
     } finally {
@@ -46,7 +46,7 @@ export class ProfileComponent {
     try {
       await this.web3Service.reject(event, this.userService.getUser(), tokenId);
       await api.post(`/event/${event.id}/${tokenId}/reject`);
-      await this.userService.fetchUser();
+      this.user = await this.userService.fetchUser();
     } catch (e) {
       console.log(e);
     } finally {

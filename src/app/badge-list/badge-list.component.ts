@@ -3,7 +3,7 @@ import _ from 'lodash';
 import api from '../api';
 import { AssignBadgeComponent } from '../assign-badge/assign-badge.component';
 import { EventService } from '../event.service';
-import { User } from '../types';
+import { Badge } from '../types';
 import { UserService } from '../user.service';
 import { Web3Service } from '../web3.service';
 
@@ -16,6 +16,7 @@ export class BadgeListComponent {
   isLoading = false;
   event = this.eventService.getEvent();
   assignBadgeComponent = AssignBadgeComponent;
+  file?: File;
 
   constructor(
     private userService: UserService,
@@ -24,9 +25,16 @@ export class BadgeListComponent {
   ) {}
 
   async addBadge() {
+    if (!this.file) {
+      return;
+    }
     this.isLoading = true;
     try {
-      await this.web3Service.addBadge(this.userService.getUser(), this.event);
+      await this.web3Service.addBadge(
+        this.userService.getUser(),
+        this.event,
+        this.file
+      );
       this.event = await this.eventService.fetchEvent(this.event.id);
     } finally {
       this.isLoading = false;
@@ -69,5 +77,13 @@ export class BadgeListComponent {
     } finally {
       this.isLoading = false;
     }
+  }
+
+  getAssignedBadgeCount(badges: Badge[]) {
+    return badges.filter((badge) => !!badge.email).length;
+  }
+
+  selectFile(e: any) {
+    this.file = e.target.files[0];
   }
 }

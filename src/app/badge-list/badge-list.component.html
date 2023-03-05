@@ -14,27 +14,44 @@
     <ion-spinner name="lines-sharp"></ion-spinner>
   </div>
   <div *ngIf="!isLoading" class="h-full flex flex-col">
-    <div class="flex flex-1">
+    <div class="flex flex-col flex-1 gap-4">
       <ion-text color="primary">
         <p class="text-2xl">Badges ({{ event.name }})</p>
-        <div class="flex flex-col" *ngFor="let p of event.badges | keyvalue">
-          <div *ngFor="let badge of p.value">
-            <p class="text-lg">{{ badge.email }}</p>
-          </div>
-          <ion-nav-link
-            router-direction="forward"
-            [component]="assignBadgeComponent"
-            [componentProps]="{ badges: p.value }"
-          >
-            <td>{{ p.value[0].tokenId }}</td>
-            <td>{{ p.value[0].email }}</td>
-          </ion-nav-link>
-        </div>
       </ion-text>
+      <div
+        class="flex flex-col gap-2"
+        *ngFor="let p of event.badges | keyvalue"
+      >
+        <ion-nav-link
+          router-direction="forward"
+          [component]="assignBadgeComponent"
+          [componentProps]="{ badges: p.value }"
+        >
+          <div class="flex flex-row gap-4">
+            <img class="w-32 h-32 rounded-lg" [src]="p.value[0].tokenURI" />
+            <div class="flex flex-col gap-2">
+              <div class="flex flex-1 flex-col gap-2">
+                <p *ngIf="getAssignedBadgeCount(p.value) === 0" class="text-lg">
+                  Unassigned
+                </p>
+                <div *ngFor="let badge of p.value">
+                  <p class="text-lg">{{ badge.email }}</p>
+                </div>
+              </div>
+              <p class="text-lg">
+                {{ getAssignedBadgeCount(p.value) }}/{{ p.value.length }}
+                Claimed
+              </p>
+            </div>
+          </div>
+        </ion-nav-link>
+      </div>
     </div>
     <ion-button (click)="saveAssignment()" expand="block"
       >Save Assignment</ion-button
     >
+
+    <input type="file" class="file-input" (change)="selectFile($event)" />
     <ion-button (click)="addBadge()" expand="block">Create Badge</ion-button>
   </div>
 </ion-content>

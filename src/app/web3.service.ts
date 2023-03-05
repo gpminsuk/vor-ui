@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Magic } from 'magic-sdk';
 import Web3 from 'web3';
-import { Badge, Event, User } from './types';
+import { Event, User } from './types';
 import VOREvent from '../contracts/VOREvent.sol/VOREvent.json';
+import api from './api';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +23,16 @@ export class Web3Service {
     this.web3 = new Web3(this.m.rpcProvider);
   }
 
-  async addBadge(user: User, event: Event) {
+  async addBadge(user: User, event: Event, file: File) {
+    const form = new FormData();
+    form.append('file', file);
+    const cid = await api.post(`/event/file`, form);
     const contract = new this.web3.eth.Contract(
       VOREvent.abi as any,
       event.address
     );
     await contract.methods
-      .addBadges(['Event Name'], ['Event description'], [1])
+      .addBadges(['Event Name'], ['Event description'], [3], [cid])
       .send({ from: user.publicAddress });
   }
 

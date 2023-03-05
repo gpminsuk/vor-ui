@@ -23,4 +23,5 @@ export type Badge = {
   email: string;
   name: string;
   description: string;
+  tokenURI: string;
 };
