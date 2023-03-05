@@ -27,4 +27,8 @@ export class EventRegisterComponent {
     );
     alert('SUCCESS!');
   }
+
+  selectFile(e: any) {
+    this.event_banner = e.target.files[0];
+  }
 }

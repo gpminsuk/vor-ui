@@ -28,6 +28,7 @@
             <img class="w-32 h-32 rounded-lg" [src]="p.value[0].tokenURI" />
             <div class="flex flex-col gap-2">
               <div class="flex flex-1 flex-col gap-2">
+                <p class="text-lg">{{ p.value[0].group }}</p>
                 <p *ngIf="getAssignedBadgeCount(p.value) === 0" class="text-lg">
                   Unassigned
                 </p>

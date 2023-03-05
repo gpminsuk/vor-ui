@@ -38,12 +38,12 @@
   [(ngModel)]="event_desc"
 ></ion-input>
 <h3 style="padding-left: 13px; color: white">Upload Event Banner</h3>
-<ion-input
+<input
   style="margin-bottom: 30%; margin-left: 30px"
-  class="mx-30"
   type="file"
-  [(ngModel)]="event_banner"
-></ion-input>
+  class="mx-30"
+  (change)="selectFile($event)"
+/>
 <a [routerLink]="['/main/events']" routerLinkActive="true">
   <ion-button style="left: 10%; padding-left: 13px">
     <p style="font-family: Lucida Console">Back</p>

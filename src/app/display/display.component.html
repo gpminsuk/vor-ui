@@ -48,6 +48,20 @@
     >
       <img class="w-24 h-24 rounded-lg min-w-max" [src]="badge.tokenURI" />
     </div>
+    <div
+      class="absolute min-w-max"
+      *ngFor="let badge of getBadgesByCategory(3); let i = index"
+      [ngStyle]="getStyleByCategory(3, i)"
+    >
+      <img class="w-24 h-24 rounded-lg min-w-max" [src]="badge.tokenURI" />
+    </div>
+    <div
+      class="absolute min-w-max"
+      *ngFor="let badge of getBadgesByCategory(4); let i = index"
+      [ngStyle]="getStyleByCategory(4, i)"
+    >
+      <img class="w-24 h-24 rounded-lg min-w-max" [src]="badge.tokenURI" />
+    </div>
   </div>
 </ion-content>
 

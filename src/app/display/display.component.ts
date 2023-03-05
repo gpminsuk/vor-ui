@@ -28,11 +28,6 @@ export class DisplayComponent {
       for (const badge of event.acceptedBadges) {
         if (badge.category === category.toString()) {
           badges.push(badge);
-          badges.push(badge);
-          badges.push(badge);
-          badges.push(badge);
-          badges.push(badge);
-          badges.push(badge);
         }
       }
     }
@@ -41,12 +36,24 @@ export class DisplayComponent {
 
   getStyleByCategory(category: number, index?: number) {
     let common = {};
+    let angleOffset = 0;
+    switch (category) {
+      case 2:
+        angleOffset = 0;
+        break;
+      case 3:
+        angleOffset = 230;
+        break;
+      case 4:
+        angleOffset = 90;
+        break;
+    }
     if (_.isNumber(index)) {
       common = {
         transform: `rotate(${
-          (360 / 6) * index + this.scrollTop * 0.3
+          angleOffset + (360 / 6) * index + this.scrollTop * 0.3
         }deg) translate(120px, 0px) rotate(-${
-          (360 / 6) * index + this.scrollTop * 0.3
+          angleOffset + (360 / 6) * index + this.scrollTop * 0.3
         }deg) translate(-50%, 0%)`,
       };
     } else {
@@ -56,9 +63,9 @@ export class DisplayComponent {
     }
     switch (category) {
       case 1:
-        return { top: `130px`, left: `5%`, ...common };
-      case 2:
         return { top: `360px`, left: `95%`, ...common };
+      case 2:
+        return { top: `130px`, left: `5%`, ...common };
       case 3:
         return { top: `590px`, left: `5%`, ...common };
       case 4:

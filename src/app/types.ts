@@ -13,12 +13,14 @@ export type Event = {
   name: string;
   description: string;
   issuer: string;
+  url: string;
   badges: Record<string, Badge[]>;
   awardedBadges: Badge[];
   acceptedBadges: Badge[];
 };
 
 export type Badge = {
+  group: string;
   tokenId: number;
   state: string;
   recipient: string;
