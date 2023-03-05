@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar class="toolbar" color="none">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
     <ion-title>Event Details</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -33,5 +30,8 @@
     >
       <ion-button expand="block">Assign badges</ion-button>
     </ion-nav-link>
+    <a [routerLink]="['/main/events']" routerLinkActive="true">
+      <ion-button expand="block">Back</ion-button>
+    </a>
   </div>
 </ion-content>

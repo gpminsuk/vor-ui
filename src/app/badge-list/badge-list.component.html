@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar class="toolbar" color="none">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
     <ion-title>Assign Badges</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -64,5 +61,8 @@
       <input type="file" class="file-input" (change)="selectFile($event)" />
       <ion-button (click)="addBadge()" expand="block">Create Badge</ion-button>
     </div>
+    <ion-nav-link router-direction="back">
+      <ion-button expand="block">Back</ion-button>
+    </ion-nav-link>
   </div>
 </ion-content>
